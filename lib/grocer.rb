@@ -20,6 +20,7 @@ def consolidate_cart(cart)
   
   arr = []
   cart.each do |item|
+    new_cart_item = find_item_by_name_in_collection()
     if !arr.include?(item) 
       arr.push(item)
       arr[item][:count] = 1
