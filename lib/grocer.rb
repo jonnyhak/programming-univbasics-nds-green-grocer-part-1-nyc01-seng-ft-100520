@@ -19,8 +19,8 @@ def consolidate_cart(cart)
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
   
   arr = []
-  cart.each do |item|
-    new_cart_item = find_item_by_name_in_collection()
+  cart.each_with_index do |item, i|
+    new_cart_item = find_item_by_name_in_collection(cart[i][:item], arr)
     if !arr.include?(item) 
       arr.push(item)
       arr[item][:count] = 1
