@@ -21,11 +21,16 @@ def consolidate_cart(cart)
   arr = []
   cart.each_with_index do |item, i|
     new_cart_item = find_item_by_name_in_collection(cart[i][:item], arr)
-    if !arr.include?(item) 
-      arr.push(item)
-      arr[item][:count] = 1
+    if !(new_cart_item) 
+      new_cart_item = {
+        :item => cart[i][:item],
+        :price => cart[i][:price],
+        :clearance => cart[counter][:clearance],
+        :count => 1
+      }
+      arr << new_cart_item
     else
-      arr[item][:count] += 1
+      new_cart_item[:count] += 1
     end
   end
   
